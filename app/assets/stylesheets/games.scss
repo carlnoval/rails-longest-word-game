@@ -1,0 +1,169 @@
+// Place all the styles related to the games controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+// defining variables
+$body-background: rgb(248, 248, 248);
+$banner-background: rgb(210, 237, 238);
+$banner-font-color: rgb(93, 148, 150);
+$banner-font-color-darker: rgb(60, 122, 124);
+$font-color: rgb(100, 100, 100);
+$transition-time: 300ms;
+
+
+body {
+  background: $body-background;
+}
+
+// removing default margins and paddings
+// setting default font-family
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  // selects only the direct chilren of the his parent wrapper element
+  // & > * {
+  //   border: 2px solid blue;
+  // }
+
+  .banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 5rem;
+
+    color: $banner-font-color;
+    background-color: $banner-background;
+
+    border-bottom: 1px solid $banner-font-color;
+    margin-bottom: 1rem;
+  }
+
+  .content {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  h3 {
+    color: $font-color;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .content-new{
+    .letters-container{
+      display: flex;
+      // gap instead of justify-content: space-between, so that the letters don't expand across th page
+      gap: .5rem;
+      flex-wrap: wrap;
+  
+      p {
+        box-sizing:border-box;
+        height: 2.5rem;
+        width: 2.5rem;
+  
+        display: flex;
+        justify-content: center;
+        align-items: center;
+  
+        // background-color: $font-color1;
+        background-color: $banner-background;
+        color: $banner-font-color;
+  
+        border: 1px solid $banner-font-color;
+        border-radius: 4px;
+        box-shadow: 0px 0px 8px $banner-background;
+      }
+      margin-bottom: 1rem;
+    }
+
+    .input-and-submit {
+      display: flex;
+      max-width: 416px;
+
+      [type='text'],
+      select,
+      textarea {
+        // so that height won't change due to added borders
+        box-sizing:border-box;
+        border: 1px solid $banner-font-color;
+        border-right: 0px;
+        border-radius: 8px 0 0 8px;
+
+        background: white;
+        height: 2.5rem;
+        font-size: 1rem;
+        padding-left: .5rem;
+        width: 100%;
+
+        transition: $transition-time;
+        text-transform: uppercase;
+
+        // the default focus sucks
+        // for some reason :focus in not in mdn
+        &:focus{
+          outline: none;
+          box-shadow: 0 0 .5rem $banner-font-color;
+        }
+      }
+
+      ::placeholder {
+        color: rgb(205, 205, 205);
+        text-transform: none;
+      }
+
+      // throw an ellipsis `...` when textbox becomes smaller than placeholder
+      // property does not work with ::placeholder selector
+      [placeholder] {
+        text-overflow: ellipsis;
+      }
+
+      .btn {
+        width: 120px;
+        // margin-left: .5rem;
+        font-size: 1rem;
+        border-radius: 0 4px 4px 0;
+      
+        border: 1px solid $banner-font-color;
+        background-color: $banner-background;
+        color: $banner-font-color;
+        transition: $transition-time;
+
+        &:hover {
+          background-color: $banner-font-color;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .content-result{
+    p {
+      color: $font-color;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    // removing the dot from ul > li
+    ul {
+      list-style-type: none;
+
+      // scss Chaining, see &:hover part
+      a, a:focus, a:active {
+        // removing underline
+        text-decoration: none;
+        color: $banner-font-color;
+        &:hover {
+          border-bottom: 1px dashed $banner-font-color;
+        }
+      }
+    }
+  }
+}

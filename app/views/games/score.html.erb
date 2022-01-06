@@ -1,0 +1,20 @@
+<div class="content-result">
+  <h3>Random letter set: [<%= @random_letters %>]</h3>
+
+  <% case @result %>  
+  <% when "empty" %>
+      <p>Result: No input recieved.</p>
+  <% when "does_not_match_set" %>
+      <p>Result: Input <strong><%= @entered_word.upcase %></strong> does not match with the given set of random letters.</p>
+  <% when "valid_word" %>
+      <p>Result: Congratulations!!! <strong><%= @entered_word.upcase %></strong> is a valid word.</p>
+  <% when "invalid_word" %>
+      <p>Result: Input <strong><%= @entered_word.upcase %></strong> is not a valid word.</p>
+  <% else %>
+      <p>Result: Hmm, this is outside of the expected case results, contact support. </p>
+  <% end %>
+
+  <ul>
+    <li><%= link_to "Play again!", new_path %></li>
+  </ul>
+</div>

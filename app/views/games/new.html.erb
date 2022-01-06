@@ -1,0 +1,26 @@
+<div class="content-new">
+  <h3>Here are your random letters</h2>
+
+  <div class="letters-container">
+    <% @random_letters.each do |letter| %>
+    <p><%= letter %></p>
+    <% end %>
+  </div>
+
+  <form action="score" method="POST">
+    <div class="input-and-submit">
+      <input type="text" name="entered_word" placeholder="Enter the longest word you can think of.">
+      <input type="submit" value="Play" class="btn">
+    </div>
+
+    <%# hidden fields %>
+    <%# to pass @letters %>
+    <%= hidden_field_tag :random_letters, @random_letters.join %>
+
+    <%# to prevent CSRF attacks %>
+    <%# https://stackoverflow.com/questions/941594/understanding-the-rails-authenticity-token  %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  </form>
+
+  
+</div>
